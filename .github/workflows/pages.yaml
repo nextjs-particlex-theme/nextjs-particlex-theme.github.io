@@ -3,7 +3,7 @@ name: Pages
 on:
   push:
     branches:
-      - master # default branch
+      - master 
 
 jobs:
   build:
@@ -11,38 +11,11 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout Main Repository
-        uses: actions/checkout@v4
+      - name: Build theme
+        uses: IceOfSummer/nextjs-particlex-theme@alpha-v2
         with:
-          repository: IceOfSummer/nextjs-particlex-theme
-          path: nextjs-particlex-theme
-          ref: alpha
+          tag: alpha-v2
   
-      - name: Checkout Datasource Repository
-        uses: actions/checkout@v4
-        with:
-          path: datasource
-  
-      - name: Cache NPM dependencies
-        uses: actions/cache@v2
-        with:
-          path: nextjs-particlex-theme/node_modules
-          key: ${{ runner.OS }}-npm-cache
-          restore-keys: |
-            ${{ runner.OS }}-npm-cache
-  
-      - name: Install Dependencies
-        run: 'cd nextjs-particlex-theme && npm install'
-  
-      - name: Build
-        env:
-          HEXO_PATH: '../datasource'
-        run: 'cd nextjs-particlex-theme && npm run build'
-  
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'nextjs-particlex-theme/out'
   deploy:
     needs: build
     permissions:
