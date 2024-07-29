@@ -14,8 +14,9 @@ jobs:
       - name: Checkout Main Repository
         uses: actions/checkout@v4
         with:
-          repository: IceOfSummer/nextjs-particlex-theme@alpha
+          repository: IceOfSummer/nextjs-particlex-theme
           path: nextjs-particlex-theme
+          ref: alpha
   
       - name: Checkout Datasource Repository
         uses: actions/checkout@v4
