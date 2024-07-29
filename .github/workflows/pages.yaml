@@ -1,0 +1,15 @@
+name: Pages
+
+on:
+  push:
+    branches:
+      - master # default branch
+
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: nextjs-particlex-theme
+        uses: IceOfSummer/nextjs-particlex-theme@alpha
