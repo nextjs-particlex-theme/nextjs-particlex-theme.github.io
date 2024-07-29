@@ -6,10 +6,53 @@ on:
       - master # default branch
 
 jobs:
-  pages:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: nextjs-particlex-theme
-        uses: IceOfSummer/nextjs-particlex-theme@alpha
+      - name: Checkout Main Repository
+        uses: actions/checkout@v4
+        with:
+          repository: IceOfSummer/nextjs-particlex-theme@alpha
+          path: nextjs-particlex-theme
+  
+      - name: Checkout Datasource Repository
+        uses: actions/checkout@v4
+        with:
+          path: datasource
+  
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
+        with:
+          path: nextjs-particlex-theme/node_modules
+          key: ${{ runner.OS }}-npm-cache
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
+  
+      - name: Install Dependencies
+        run: 'cd nextjs-particlex-theme && npm install'
+  
+      - name: Build
+        env:
+          HEXO_PATH: '../datasource'
+        run: 'cd nextjs-particlex-theme && npm run build'
+  
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'nextjs-particlex-theme/out'
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+    
