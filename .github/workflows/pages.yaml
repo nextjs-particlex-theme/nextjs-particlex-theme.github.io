@@ -12,7 +12,7 @@ jobs:
       contents: write
     steps:
 
-    - name: Checkout Main Repository
+    - name: Checkout Main Repository 
       uses: actions/checkout@v4
       with:
         repository: IceOfSummer/nextjs-particlex-theme
