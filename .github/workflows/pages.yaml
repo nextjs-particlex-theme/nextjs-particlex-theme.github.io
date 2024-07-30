@@ -35,7 +35,7 @@ jobs:
       run: 'cd nextjs-particlex-theme && npm install'
 
     - name: Build
-      run: 'export HEXO_PATH=${GITHUB_WORKSPACE}/datasource && cd nextjs-particlex-theme && npm run build'
+      run: 'export BLOG_PATH=${GITHUB_WORKSPACE}/datasource && cd nextjs-particlex-theme && npm run build'
 
     - name: Upload GitHub Pages artifact
       uses: actions/upload-pages-artifact@v3
