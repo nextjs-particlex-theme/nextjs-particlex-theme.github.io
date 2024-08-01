@@ -26,6 +26,12 @@ jobs:
         cache: 'npm'
         cache-dependency-path: nextjs-particlex-theme/package-lock.json
 
+    - name: Cache Next.js
+      uses: actions/cache@4
+      with:
+        path: nextjs-particlex-theme/.next/cache
+        key: nextjs-cache
+
     - name: Checkout Datasource Repository
       uses: actions/checkout@v4
       with:
