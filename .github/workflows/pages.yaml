@@ -35,6 +35,8 @@ jobs:
       run: 'cd nextjs-particlex-theme && npm install'
 
     - name: Build
+      env:
+        NEXT_PUBLIC_CND_PUBLIC_PATH_BASE_URL: 'https://selfb.asia/static/particlex/static'
       run: 'export BLOG_PATH=${GITHUB_WORKSPACE}/datasource && cd nextjs-particlex-theme && npm run build'
 
     - name: Upload GitHub Pages artifact
@@ -56,4 +58,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-    
