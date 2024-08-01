@@ -27,7 +27,7 @@ jobs:
         cache-dependency-path: nextjs-particlex-theme/package-lock.json
 
     - name: Cache Next.js
-      uses: actions/cache@4
+      uses: actions/cache@v4
       with:
         path: nextjs-particlex-theme/.next/cache
         key: nextjs-cache
