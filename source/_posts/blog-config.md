@@ -3,10 +3,18 @@ title: 博客配置
 date: 2024/08/01 10:40:13
 tags: 配置
 seo:
-	description: particlex 的博客文章配置项文档。
+  description: particlex 的博客文章配置项文档。
+  keyword: 
+    - 'particlex config'
+	- 'particlex 配置'
 ---
 
-# 配置文件
+
+> 说明: 类型中有 `undefined` 表示你可以不提供该参数。
+
+# 博客配置
+
+## 配置文件
 
 > 由于做这个项目的目的是弃用 hexo，所以可以无缝从 hexo 切换过来。
 
@@ -35,11 +43,69 @@ theme_config:
 
 # 环境变量
 
-[environment.d.ts](https://github.com/nextjs-particlex-theme/particlex/blob/master/environment.d.ts)
+一切以该文件注释为准：[environment.d.ts](https://github.com/nextjs-particlex-theme/particlex/blob/master/environment.d.ts).
 
-# 博客元数据
+## BLOG_PATH
 
-在 markdown 顶部使用如下格式以提供元数据：
+**类型:** `string`
+
+**说明:** 博客的路径，必须提供，虽然可以使用相对路径，但还是**强烈建议使用绝对路径**！
+
+## NEXT_PUBLIC_CND_PUBLIC_PATH_BASE_URL
+
+**类型:** `string` | `undefined`
+
+**默认值:** 无默认值
+
+**说明:** CDN 路径前缀，不要以 `/` 结尾，否则路径拼接会出问题。
+
+> 因为环境变量是 next.js 处理的，所以没有很好的办法来对 `/` 结尾的 URL 进行替换...
+
+## DATASOURCE_CACHE_ENABLE
+
+**类型:** `boolean` | `undefined`
+
+**默认值:** `true`
+
+**说明:** 开启数据源缓存以加速构建，推荐开启 (使用默认值即可)。
+
+## YAML_INDENT_SPACE_COUNT
+
+**类型:** `number` | `undefined`
+
+**默认值:** `2`
+
+**说明:** 处理 [文章元数据](#文章元数据)中 yaml 配置的 TAB 缩进，这里会将 TAB 替换为相应数量的空格，以便于继续 YAML 解析。
+
+> 虽然提供了这个配置，但还是不要用 TAB 键来敲 YAML 的缩进！！！除非你是在专门的 IDE 中，例如
+> JetBrains 系列的 IDE 会在编辑 YAML 时自动将 TAB 转为 空格。
+> **但是在 VSCode 中，这个转换是不存在的，因为你是在 md 文件中编辑的 yaml**，所以需要格外注意，同理其它编辑器也需要一并注意。
+
+
+## NEXT_PUBLIC_COMMENT_SCRIPT_INJECT
+
+**类型:** `string` | `undefined`
+
+**默认值:** 无默认值
+
+**说明:** 为第三方评论组件注入脚本。
+
+详见 [配置评论组件](/tips#配置评论组件)
+
+## NEXT_PUBLIC_COMMENT_CONTAINER_IDENTIFIER
+
+**类型:** `string` | `undefined`
+
+**默认值:** 无默认值
+
+**说明:** 为第三方评论组件设置组件容器。
+
+详见 [配置评论组件](/tips#配置评论组件)
+
+# 文章元数据
+
+
+在文章 markdown 顶部使用如下格式以提供元数据：
 
 ```text
 ---
