@@ -6,7 +6,7 @@ seo:
   description: particlex 的博客文章配置项文档。
   keyword: 
     - 'particlex config'
-	- 'particlex 配置'
+    - 'particlex 配置'
 ---
 
 
