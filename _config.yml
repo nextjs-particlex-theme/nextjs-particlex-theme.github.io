@@ -3,4 +3,7 @@ subtitle: 'Build high performance blog.'
 description: 'Use particlex to build your amazing blog!'
 author: IceOfSummer
 authorHome: https://github.com/nextjs-particlex-theme
-
+theme_config:
+  background:
+    - https://selfb.asia/images/2024/08/wallhaven-2yxp16_2560x1080.webp
+    - https://selfb.asia/images/2024/08/wallhaven-yxl66g_2560x1080.webp
