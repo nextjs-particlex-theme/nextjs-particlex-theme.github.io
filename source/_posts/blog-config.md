@@ -32,7 +32,7 @@ description: <string | undefined>
 # homePage
 authorHome: <string | undefined>
 
-theme_config:
+theme_config: <undefined | ThemeConfig>
 	# 首页背景图片，配置多个每次都会随机展示
 	background: <string[] | undefined>
 	# 首页显示的文章数量，默认为 5

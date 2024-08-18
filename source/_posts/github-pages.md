@@ -75,14 +75,4 @@ jobs:
     
 ```
 
-## 配置 CDN
-
-如果需要配置 CDN，你需要缓存项目中 `public` 目录中所有内容到你的 CDN 中，并最终在 `Build` 阶段提供环境变量：
-
-```
-- name: Build
-  run: 'export BLOG_PATH=${GITHUB_WORKSPACE}/datasource && cd        nextjs-particlex-theme && npm run build'
-  env: 
-    NEXT_PUBLIC_CND_PUBLIC_PATH_BASE_URL: 'https://your.cdn/prefix'
-```
-
+如果需要提供[环境变量](/blog-config#环境变量)，直接在 `Build` 步骤提供就行。
