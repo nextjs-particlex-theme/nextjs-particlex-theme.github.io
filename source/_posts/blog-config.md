@@ -102,6 +102,30 @@ theme_config: <undefined | ThemeConfig>
 
 详见 [配置评论组件](/tips#配置评论组件)
 
+## BLOG_HOME_POST_DIRECTORY
+
+**类型:** `string`
+
+**默认值:** `source/_posts`
+
+**说明:** 首页文章的存放目录，相对于 [BLOG_PATH](#blog_path) 的路径。详见 [从任意 Markdown 博客迁移](/quick-start#从任意 Markdown 博客迁移)。
+
+## BLOG_RESOURCE_DIRECTORY
+
+**类型:** `string`
+
+**默认值:** `source/images`
+
+**说明:** 资源文件的存放目录，相对于 [BLOG_PATH](#blog_path) 的路径。详见 [从任意 Markdown 博客迁移](/quick-start#从任意 Markdown 博客迁移)。
+
+## BLOG_POST_DIRECTORY
+
+**类型:** `string`
+
+**默认值:** `source`
+
+**说明:** 所有博客文件的存放路径，相对于 [BLOG_PATH](#blog_path) 的路径。详见 [从任意 Markdown 博客迁移](/quick-start#从任意 Markdown 博客迁移)。
+
 # 文章元数据
 
 
