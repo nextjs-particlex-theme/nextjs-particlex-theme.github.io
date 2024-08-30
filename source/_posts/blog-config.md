@@ -90,7 +90,7 @@ theme_config: <undefined | ThemeConfig>
 
 **说明:** 为第三方评论组件注入脚本。
 
-详见 [配置评论组件](/tips#配置评论组件)
+详见 [配置评论组件](/quick-start#配置评论组件)
 
 ## NEXT_PUBLIC_COMMENT_CONTAINER_IDENTIFIER
 
@@ -100,7 +100,7 @@ theme_config: <undefined | ThemeConfig>
 
 **说明:** 为第三方评论组件设置组件容器。
 
-详见 [配置评论组件](/tips#配置评论组件)
+详见 [配置评论组件](/quick-start#配置评论组件)
 
 ## BLOG_HOME_POST_DIRECTORY
 

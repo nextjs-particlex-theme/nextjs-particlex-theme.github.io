@@ -123,6 +123,35 @@ npm run build
 
 # 常见问题
 
+## 文章元数据
+
+元数据类似于 Hexo 中的机制，需要你在 Markdown 文件的顶部提供文章相关的配置，例如：
+
+```md
+---
+title: async/await 异步编程
+date: 2024-07-01 22:56:28
+categories:
+  - Rust
+tags: Rust
+seo:
+  title: async/await 异步编程 | Rust
+  description: 使用 async/await 进行异步编程。
+  keywords: 
+    - rust
+    - async
+    - await
+---
+
+# title
+
+# sub-title
+
+xxxx
+```
+
+详见 [文章元数据](/blog-config#文章元数据)
+
 ## 分支选择
 
 应该优先考虑以 `v<version>-stabled` 分支作为基础来对博客进行构建，例如 `v1-stabled`，我们会持续对这个分支进行稳固更新。
