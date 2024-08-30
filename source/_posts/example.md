@@ -114,3 +114,38 @@ public class HelloWorld {
 
 <span style="display:block;text-align:right;color:orangered;">橙色居右</span>
 <span style="display:block;text-align:center;color:orangered;">橙色居中</span>
+
+### Github 警告
+
+> [!NOTE]
+> Note 123
+
+> [!TIP]
+> TIP 123
+
+> [!IMPORTANT]
+> IMPORTANT 123
+
+> [!WARNING]
+> WARNING 123
+
+> [!CAUTION]
+> CAUTION 123
+
+
+```text
+> [!NOTE]
+> Note 123
+
+> [!TIP]
+> TIP 123
+
+> [!IMPORTANT]
+> IMPORTANT 123
+
+> [!WARNING]
+> WARNING 123
+
+> [!CAUTION]
+> CAUTION 123
+```

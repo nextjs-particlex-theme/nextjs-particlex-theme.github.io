@@ -75,4 +75,11 @@ jobs:
     
 ```
 
-如果需要提供[环境变量](/blog-config#环境变量)，直接在 `Build` 步骤提供就行。
+如果需要提供[环境变量](/blog-config#环境变量)，直接在 `Build` 步骤提供就行。例如禁用构建时的缓存：
+
+```yaml
+- name: Build
+  env: 
+    DATASOURCE_CACHE_ENABLE: false
+  run: 'export BLOG_PATH=${GITHUB_WORKSPACE}/datasource && cd nextjs-particlex-theme && npm run build'
+```

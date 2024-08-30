@@ -6,47 +6,16 @@ seo:
 	description: particlex 主题快速开始。
 ---
 
-# 概念
 
-在这里简单介绍一些概念，方便你后续进行理解和使用。
+# 开始构建
 
-## 首页文章和文章
+本项目实际上就是一个普通的 [Next.js](https://nextjs.org/) 项目，通过在[环境变量](/blog-config#环境变量)中指向博客的目录，在构建时进行读取，最后借助于 SSG 模式生成博客的静态文件。
 
-首页文章，是指在文章的根目录就可以看到的一些博客文章。点击上面导航栏中的 [Archives](/archives) 按钮，所有列出的文章就是首页文章，同时在该页面中的搜索功能，**可搜索的也只有首页文章**。
+## 创建配置文件
 
-文章，可以抽象的理解为一个 HTML 页面，`文章` 是包括 `首页文章` 的。这个东西是为了帮助做**嵌套页面**的，例如你做了一个 Java 教程，从入门到精通，可能要好几篇博客，但是你又不想让它们直接显示在首页，而是单独在首页创建一个专门用于跳转的文章，然后在里面放上介绍，最后放上其它教程的介绍。例如下图就是一个相关的例子：
+> [!NOTE]
+> 此步骤可选，不提供也可以，但是可能会有部分功能上的影响。
 
-![Nested page](https://selfb.asia/images/2024/08/particles-netsted-page.webp)
-
-(~~不要脸宣传自己博客一波~~)
-
-其中右侧的页面就是被嵌套的页面，不会在首页中显示。
-
-虽然使用 `Tags` 或者 `Categories` 可以达到类似的效果，但是使用这种方式对页面的控制更多。
-
-## 构建原理
-
-本项目实际上就是一个普通的 Next.js 项目，通过在环境变量中指向博客的目录，然后在构建时进行读取，最后借助于 Next.js 生成博客的静态文件。
-
-如果你打算从 Hexo 博客迁移，您只需要提供下面的环境变量：
-
-```env
-BLOG_PATH=/path/to/your/hexo
-```
-
-这个环境变量的值指向你的 Hexo 博客根目录，你可以在本项目的根目录中创建一个 `.env.local` 文件，将上面的配置写入，或者你也可以直接修改 `.env` 文件，甚至如果你是 Linux 系统，你也可以通过 `export` 关键字来临时暴露这个环境变量也是可以的 (Windows 使用 `set` 命令)。
-
-在完成上面的配置后，直接运行下面的命令就可以开始构建了：
-
-```shell
-npm run install
-npm run build
-```
-
-运行完成后，会在 `out` 目录生成所有的静态文件。
-
-
-# 开始使用
 
 本博客框架最大的特点就是无侵入，你只需要拉取代码后，安装依赖并配置好相关环境变量后就可直接打包，但仍然需要你创建一个配置文件。
 
@@ -58,29 +27,101 @@ subtitle: 子标题
 description: 描述
 ```
 
-更多配置详见 [配置文件](/blog-config#配置文件)。
 
-`_config.yaml` 可以提供一部分的配置，但还有另外一部分配置需要在环境变量中提供，你需要根据你的打包形式来提供相关的环境变量：
+## 配置环境变量
+
+### 从 Hexo 迁移
+
+如果你打算从 Hexo 博客迁移，只需要提供一个环境变量即可无侵入迁移。
 
 
-例如 [Github Pages 部署](/github-pages) 中，在 `Build` 阶段可以提供相关的[环境变量配置](/blog-config#环境变量)，例如禁用构建时的缓存：
+- 如果你是 Linux 系统，你也可以通过 `export` 关键字来临时暴露这个环境变量：
 
-```yaml
-- name: Build
-  env: 
-    DATASOURCE_CACHE_ENABLE: false
-  run: 'export BLOG_PATH=${GITHUB_WORKSPACE}/datasource && cd nextjs-particlex-theme && npm run build'
-```
+  ```shell
+  export BLOG_PATH=/path/to/your/hexo
+  ```
 
-上面的代码中，我们使用了 `env` 来传递环境变量，并且关闭了构建时的缓存，除了这种方式外，在 `run` 字段中，直接通过 `export` 来设置环境变量也是可行的！例如上面的 `export BLOG_PATH=${GITHUB_WORKSPACE}/datasource`。
+- 如果你是 windows，可以在**本项目**的根目录中创建一个 `.env.local` 文件：
 
-更多可用的环境变量可以参考：[环境变量配置](/blog-config#环境变量)。如果你有其它需要，可以根据右侧目录进行选择性观看。
+  ```env
+  # .env.local
+  BLOG_PATH=/path/to/your/hexo
+  ```
+
+
+### 从其它任意 Markdown 博客迁移
+
+支持从任意 Markdown 类型的博客迁移，只要你的博客文件是由 Markdown 文件编写的，就可以进行迁移。
+
+迁移时，除了基础的 `BLOG_PATH` 需要提供外(详见上面的 [从 Hexo 迁移](#从-hexo-迁移))，还需要额外提供下面三个环境变量：
+
+- `BLOG_HOME_POST_DIRECTORY`: 首页文章文件夹，这些文件将会在首页和归档中展示。
+- `BLOG_RESOURCE_DIRECTORY`: 资源文件夹，访问前缀固定为 `images`。
+- `BLOG_POST_DIRECTORY`：存放所有其它文章的文件夹，将会为这些页面构建 web 静态页面，但不会在首页会和归档页面中显示。
+
+`BLOG_HOME_POST_DIRECTORY` 可以是 `BLOG_POST_DIRECTORY` 的子目录，**但是反过来不行**！除此之外，这两个目录也可以单独分开指定。
 
 ---
 
-如果你目前正在使用 hexo 作为博客框架，接下来可以直接参考 [Github Pages 部署教程](/github-pages) 来进行打包使用了。
+以 hexo 博客为例，上面三个参数应该分别配置为：
 
-否则，你还需要额外配置其它的环境变量后才能正常打包，可以参考：[从任意 Markdown 博客迁移](#从任意-markdown-博客迁移)。
+- `BLOG_HOME_POST_DIRECTORY`: `source/_posts`
+- `BLOG_RESOURCE_DIRECTORY`: `source/images`
+- `BLOG_POST_DIRECTORY`：`source`
+
+在 hexo 中，`source` 目录中存放了所有的 Markdown 文档，`source/_post` 存放了首页文章的 Markdown 文档。
+
+---
+
+再例如，以下面的博客目录结构为例：
+
+```text
+blog-root
+├── ROOT
+│   ├── java_guide.md
+│   └── javascript_guide.md
+├── javascript
+│   └── javascript_advance.md
+├── img
+│   └── coffee.png
+├── hello_world.md
+├── java_advance.md
+└── _config.yaml
+```
+
+其中 ROOT 目录中的 md 文件为 `首页文章`，其它文件均为普通的 `文章`(嵌套页面)。
+
+相应的配置为：
+
+- `BLOG_HOME_POST_DIRECTORY`: `ROOT`
+- `BLOG_RESOURCE_DIRECTORY`: `img`
+- `BLOG_POST_DIRECTORY`：`./`
+- `BLOG_PATH`: `/xxx/xxx/blog-root`
+
+注意 `BLOG_POST_DIRECTORY` 不能为空字符串。
+
+> [!IMPORTANT]
+> 提示：这里的静态资源目录虽然为 `img`，但实际访问前缀会被替换为 `images`，例如这里的 `img/coffee.png`，访问路径为 `images/coffee.png`. 这是 next.js 的限制，目前没有很优雅的方法解决。
+
+## 开始构建
+
+### 手动构建
+
+在完成上面的配置后，直接运行下面的命令就可以开始构建了：
+
+```shell
+npm run install
+npm run build
+```
+
+运行完成后，会在 `out` 目录生成所有的静态文件。
+
+### 自动化构建
+
+参考：[Github Pages 部署](/github-pages)。
+
+
+# 常见问题
 
 ## 分支选择
 
@@ -181,60 +222,6 @@ description: 描述
     NEXT_PUBLIC_COMMENT_CONTAINER_IDENTIFIER: '.giscus'
 ```
 
-## 从任意 Markdown 博客迁移
-
-> 如果打算从 Hexo 博客迁移，则不需要配置这些内容
-
-支持从任意 Markdown 类型的博客迁移，只要你的博客文件是由 Markdown 文件编写的，就可以进行迁移。
-
-迁移时，除了基础的 `BLOG_PATH` 需要提供外，还需要额外提供下面三个环境变量：
-
-- `BLOG_HOME_POST_DIRECTORY`: 首页文章文件夹
-- `BLOG_RESOURCE_DIRECTORY`: 资源文件夹
-- `BLOG_POST_DIRECTORY`：存放所有文章的文件夹
-
-需要注意的是，`BLOG_HOME_POST_DIRECTORY` 可以不是 `BLOG_POST_DIRECTORY` 的子目录，它可以是任意一个单独的目录，也可以作为一个子目录。
-
-但是！`BLOG_POST_DIRECTORY` **不能是** `BLOG_HOME_POST_DIRECTORY` 的子目录！因为在前面已经说过了，`文章` 是包含 `首页文章` 的。如果 `BLOG_POST_DIRECTORY` 是 `BLOG_HOME_POST_DIRECTORY` 的子目录，虽然首页能够正常显示所有的 `首页文章`，但是如果点击查看则会抛出 404 错误！
-
-以 hexo 博客为例，上面三个参数应该分别配置为：
-
-- `BLOG_HOME_POST_DIRECTORY`: `source/_posts`
-- `BLOG_RESOURCE_DIRECTORY`: `source/images`
-- `BLOG_POST_DIRECTORY`：`source`
-
-在 hexo 中，`source` 目录中存放了所有的 Markdown 文档，`source/_post` 存放了首页文章的 Markdown 文档。
-
----
-
-再例如，以下面的博客目录结构为例：
-
-```text
-blog-root
-├── ROOT
-│   ├── java_guide.md
-│   └── javascript_guide.md
-├── javascript
-│   └── javascript_advance.md
-├── img
-│   └── coffee.png
-├── hello_world.md
-├── java_advance.md
-└── _config.yaml
-```
-
-其中 ROOT 目录中的 md 文件为 `首页文章`，其它文件均为普通的 `文章`(嵌套页面)。
-
-相应的配置为：
-
-- `BLOG_HOME_POST_DIRECTORY`: `ROOT`
-- `BLOG_RESOURCE_DIRECTORY`: `img`
-- `BLOG_POST_DIRECTORY`：`./`
-
-注意 `BLOG_POST_DIRECTORY` 不能为空字符串。
-
-> 警告：由于[前面](#添加图片)说了，图片目录名称 `images`，虽然在这里指定为了 `img`，但实际访问前缀会被替换为 `images`，例如这里的 `img/coffee.png`，访问路径为 `images/coffee.png`.
-
 ## 配置 CDN
 
 如果需要配置 CDN，你需要缓存项目中 [public](/public) 目录中所有内容到你的 CDN 中，并最终在构建阶段提供环境变量。例如在 Github Actions中：
@@ -245,5 +232,5 @@ blog-root
   env: 
     NEXT_PUBLIC_CND_PUBLIC_PATH_BASE_URL: 'https://your.cdn/prefix'
 ```
-
-> public 目录在一般情况下不会进行变动，即使变动，也不会在原有文件进行修改，所以无需担心文件内容对不上。
+> [!TIP]
+> public 目录在一个 stable 分支中不会发生变动，当你使用新的分支时建议参考迁移指南来判断是否需要更新你的 CDN 数据。

@@ -9,7 +9,7 @@ seo:
     - 'particlex 配置'
 ---
 
-
+> [!NOTE]
 > 说明: 类型中有 `undefined` 表示你可以不提供该参数。
 
 # 博客配置
