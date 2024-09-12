@@ -112,10 +112,30 @@ public class HelloWorld {
 
 支持原生 HTML 语法，请写内联样式，如下：
 
-<span style="display:block;text-align:right;color:orangered;">橙色居右</span>
-<span style="display:block;text-align:center;color:orangered;">橙色居中</span>
+```md
+<span style="display: block; text-align: center; color: orangered">橙色居中</span>
+```
+效果(橙色居中)：
 
-### Github 警告
+<dib style={{ display: 'block', textAlign: 'center', color: 'orangered' }}>橙色居中</dib>
+
+
+### 2.2 Mdx
+
+支持 `mdx` + [tailwindcss](https://www.tailwindcss.cn/).
+
+```html
+<dib className="text-orange-500 text-right">hello</dib>
+```
+
+效果(橙色居右)：
+
+<div className="text-orange-500 text-right">hello</div>
+
+> [!CAUTION]
+> 在 mdx 中必须使用 React 语法，例如 `class` 需要写成 `className`, `style`需要提供一个对象而不是直接的字符串。
+
+### 2.3 Github 警告
 
 > [!NOTE]
 > Note 123
