@@ -122,7 +122,12 @@ public class HelloWorld {
 
 ### 2.2 Mdx
 
-支持 `mdx` + [tailwindcss](https://www.tailwindcss.cn/).
+> [!CAUTION]
+> 在 mdx 中必须使用 React 语法，例如 `class` 需要写成 `className`, `style`需要提供一个对象而不是直接的字符串。
+>
+> **由于使用 SSR 渲染，所以无法绑定事件**。
+
+支持 [mdx](https://www.mdxjs.cn/docs/using-mdx/) + [tailwindcss](https://www.tailwindcss.cn/).
 
 ```html
 <dib className="text-orange-500 text-right">hello</dib>
@@ -132,8 +137,7 @@ public class HelloWorld {
 
 <div className="text-orange-500 text-right">hello</div>
 
-> [!CAUTION]
-> 在 mdx 中必须使用 React 语法，例如 `class` 需要写成 `className`, `style`需要提供一个对象而不是直接的字符串。
+
 
 ### 2.3 Github 警告
 

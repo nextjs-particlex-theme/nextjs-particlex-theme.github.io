@@ -61,14 +61,6 @@ theme_config: <undefined | ThemeConfig>
 
 > 因为环境变量是 next.js 处理的，所以没有很好的办法来对 `/` 结尾的 URL 进行替换...
 
-## DATASOURCE_CACHE_ENABLE
-
-**类型:** `boolean` | `undefined`
-
-**默认值:** `true`
-
-**说明:** 开启数据源缓存以加速构建，推荐开启 (使用默认值即可)。
-
 ## YAML_INDENT_SPACE_COUNT
 
 **类型:** `number` | `undefined`
