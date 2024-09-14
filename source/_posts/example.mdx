@@ -129,6 +129,8 @@ public class HelloWorld {
 
 支持 [mdx](https://www.mdxjs.cn/docs/using-mdx/) + [tailwindcss](https://www.tailwindcss.cn/).
 
+#### 基础使用
+
 ```html
 <dib className="text-orange-500 text-right">hello</dib>
 ```
@@ -137,7 +139,73 @@ public class HelloWorld {
 
 <div className="text-orange-500 text-right">hello</div>
 
+#### 图表
 
+由于 mermaid [不支持 SSR](https://github.com/mermaid-js/mermaid/issues/3650)，所以使用了支持 SSR 的 [Pintor](https://pintorajs.vercel.app/demo/live-editor) 来绘制流程图。
+
+```html
+<PintoraDiagram code={`
+activityDiagram
+title: Activity Example
+start
+partition Init {
+  :read config;
+  :init internal services;
+  note left: init themes
+}
+:Diagram requested;
+if (diagram registered ?) then
+  :get implementation;
+else (no)
+  :print error;
+endif
+switch ( renderer type )
+case ( svg )
+  :Generate svg;
+case ( canvas )
+  :Draw canvas;
+case ( custom )
+  :Custom renderer output;
+endswitch
+while (data available?) is (可用)
+  :read data;
+  :generate diagrams;
+endwhile (no)
+end
+`}/>
+```
+
+效果：
+
+<PintoraDiagram code={`
+activityDiagram
+title: Activity Example
+start
+partition Init {
+  :read config;
+  :init internal services;
+  note left: init themes
+}
+:Diagram requested;
+if (diagram registered ?) then
+  :get implementation;
+else (no)
+  :print error;
+endif
+switch ( renderer type )
+case ( svg )
+  :Generate svg;
+case ( canvas )
+  :Draw canvas;
+case ( custom )
+  :Custom renderer output;
+endswitch
+while (data available?) is (可用)
+  :read data;
+  :generate diagrams;
+endwhile (no)
+end
+`}/>
 
 ### 2.3 Github 警告
 
