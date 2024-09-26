@@ -33,12 +33,12 @@ description: <string | undefined>
 authorHome: <string | undefined>
 
 theme_config: <undefined | ThemeConfig>
-	# 首页背景图片，配置多个每次都会随机展示
-	background: <string[] | undefined>
-	# 首页显示的文章数量，默认为 5
-	indexPageSize: <number | undeinfed>
-	# 头像
-	avatar: <string | undefined>
+  # 首页背景图片，配置多个每次都会随机展示
+  background: <string[] | undefined>
+  # 首页显示的文章数量，默认为 5
+  indexPageSize: <number | undeinfed>
+  # 头像
+  avatar: <string | undefined>
 ```
 
 # 环境变量
@@ -198,8 +198,8 @@ tags:
 tags: java
 ---
 tags: 
-	- java
-	- spring
+  - java
+  - spring
 ---
 tags:
   data:
@@ -227,8 +227,8 @@ categories:
 categories: java
 ---
 categories: 
-	- java
-	- spring
+  - java
+  - spring
 ---
 categories:
   data:
@@ -243,30 +243,30 @@ categories:
 
 ```yaml
 seo:
-	title: <string | undefined>
-	keywords: <string[] | undefined>
-	description: string
+  title: <string | undefined>
+  keywords: <string[] | undefined>
+  description: string
 ```
 
 - `title`: html 网页标题，而非文章的标题，如果不指定，则会使用 `<文章标题> | <博客title>`。
-	
-	参考资料：[影响标题链接的最佳实践](https://developers.google.cn/search/docs/appearance/title-link?hl=zh-cn#page-titles)。
+  
+  参考资料：[影响标题链接的最佳实践](https://developers.google.cn/search/docs/appearance/title-link?hl=zh-cn#page-titles)。
 
 - `keywords`: 关键字，如果不提供，默认使用 `tags` 内容(如果有)。
 
-	参考资料: [关键词堆砌](https://developers.google.cn/search/docs/essentials/spam-policies?hl=zh-cn#keyword-stuffing)； [Google 不会将关键字元标记用于网页排名](https://developers.google.cn/search/blog/2009/09/google-does-not-use-keywords-meta-tag?hl=zh-cn)。
+  参考资料: [关键词堆砌](https://developers.google.cn/search/docs/essentials/spam-policies?hl=zh-cn#keyword-stuffing)； [Google 不会将关键字元标记用于网页排名](https://developers.google.cn/search/blog/2009/09/google-does-not-use-keywords-meta-tag?hl=zh-cn)。
 
 - `description`: 网页描述。
 
-	参考资料：[使用高质量的描述](https://developers.google.cn/search/docs/appearance/snippet?hl=zh-cn#use-quality-descriptions)。
+  参考资料：[使用高质量的描述](https://developers.google.cn/search/docs/appearance/snippet?hl=zh-cn#use-quality-descriptions)。
 
 **示例:**
 
 ```yaml
 seo:
-	title: Java Hello World | Xxx's Blog
-	keywords:
-		- java
-		- 'hello world'
-	description: '使用 Java 编写 Hello World 代码。'
+  title: Java Hello World | Xxx's Blog
+  keywords:
+    - java
+    - 'hello world'
+  description: '使用 Java 编写 Hello World 代码。'
 ```
