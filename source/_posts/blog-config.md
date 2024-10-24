@@ -20,7 +20,9 @@ seo:
 
 在你的博客根目录中创建 `_config.yaml`.
 
-可用配置：
+可用配置: [DataSourceConfig](/objects#DataSourceConfig)。
+
+样例：
 
 ```yaml
 # 博客标题
@@ -120,6 +122,7 @@ theme_config: <undefined | ThemeConfig>
 
 # 文章元数据
 
+[Metadata](/objects#metadata)
 
 在文章 markdown 顶部使用如下格式以提供元数据：
 
