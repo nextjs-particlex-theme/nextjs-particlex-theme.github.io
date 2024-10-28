@@ -7,7 +7,12 @@ seo:
 ---
 
 
-# 开始构建
+# 自动化构建
+
+参考：[Github Pages 部署](/github-pages)。
+
+
+# 手动构建
 
 本项目实际上就是一个普通的 [Next.js](https://nextjs.org/) 项目，通过在[环境变量](/blog-config#环境变量)中指向博客的目录，在构建时进行读取，最后借助于 SSG 模式生成博客的静态文件。
 
@@ -57,7 +62,7 @@ description: 描述
 
 - `BLOG_HOME_POST_DIRECTORY`: 首页文章文件夹，这些文件将会在首页和归档中展示。
 - `BLOG_RESOURCE_DIRECTORY`: 资源文件夹，访问前缀固定为 `images`。
-- `BLOG_POST_DIRECTORY`：存放所有其它文章的文件夹，将会为这些页面构建 web 静态页面，但不会在首页会和归档页面中显示。
+- `BLOG_POST_DIRECTORY`：存放所有页面的文件夹，将会为这些页面构建 web 静态页面。
 
 `BLOG_HOME_POST_DIRECTORY` 可以是 `BLOG_POST_DIRECTORY` 的子目录，**但是反过来不行**！除此之外，这两个目录也可以单独分开指定。
 
@@ -105,8 +110,6 @@ blog-root
 
 ## 开始构建
 
-### 手动构建
-
 在完成上面的配置后，直接运行下面的命令就可以开始构建了：
 
 ```shell
@@ -115,10 +118,6 @@ npm run build
 ```
 
 运行完成后，会在 `out` 目录生成所有的静态文件。
-
-### 自动化构建
-
-参考：[Github Pages 部署](/github-pages)。
 
 
 # 常见问题
