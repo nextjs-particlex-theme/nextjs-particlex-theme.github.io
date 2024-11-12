@@ -83,3 +83,7 @@ jobs:
     DATASOURCE_CACHE_ENABLE: false
   run: 'export BLOG_PATH=${GITHUB_WORKSPACE}/datasource && cd nextjs-particlex-theme && npm run build'
 ```
+
+# 其它
+
+生成 sitemap：[generate-sitemap](https://github.com/nextjs-particlex-theme/generate-sitemap)
