@@ -139,103 +139,74 @@ public class HelloWorld {
 
 <div className="text-orange-500 text-right">hello</div>
 
-##### 图表
+#### 图表
 
-由于 mermaid [不支持 SSR](https://github.com/mermaid-js/mermaid/issues/3650)，所以使用了支持 SSR 的 [Pintor](https://pintorajs.vercel.app/demo/live-editor) 来绘制流程图。
+由于 mermaid [不支持 SSR](https://github.com/mermaid-js/mermaid/issues/3650)，所以使用了支持 SSR 的 [Pintor](https://pintorajs.vercel.app/demo/live-editor) 来绘制流程图(使用时记得左边至少有一个缩进，否则可能会报错)。
 
 ```html
-<PintoraDiagram code={`activityDiagram
-title: Activity Example
-start
-partition Init {
-  :read config;
-  :init internal services;
-  note left: init themes
-}
-:Diagram requested;
-if (diagram registered ?) then
-  :get implementation;
-else (no)
-  :print error;
-endif
-switch ( renderer type )
-case ( svg )
-  :Generate svg;
-case ( canvas )
-  :Draw canvas;
-case ( custom )
-  :Custom renderer output;
-endswitch
-while (data available?) is (可用)
-  :read data;
-  :generate diagrams;
-endwhile (no)
-end`}/>
+<PintoraDiagram code={`
+  activityDiagram
+  title: Activity Example
+  start
+  partition Init {
+    :read config;
+    :init internal services;
+    note left: init themes
+  }
+  :Diagram requested;
+  if (diagram registered ?) then
+    :get implementation;
+  else (no)
+    :print error;
+  endif
+  switch ( renderer type )
+  case ( svg )
+    :Generate svg;
+  case ( canvas )
+    :Draw canvas;
+  case ( custom )
+    :Custom renderer output;
+  endswitch
+  while (data available?) is (可用)
+    :read data;
+    :generate diagrams;
+  endwhile (no)
+  end
+`}/>
 ```
 
 效果：
 
 <PintoraDiagram code={`
-activityDiagram
-title: Activity Example
-start
-partition Init {
-  :read config;
-  :init internal services;
-  note left: init themes
-}
-:Diagram requested;
-if (diagram registered ?) then
-  :get implementation;
-else (no)
-  :print error;
-endif
-switch ( renderer type )
-case ( svg )
-  :Generate svg;
-case ( canvas )
-  :Draw canvas;
-case ( custom )
-  :Custom renderer output;
-endswitch
-while (data available?) is (可用)
-  :read data;
-  :generate diagrams;
-endwhile (no)
-end
+  activityDiagram
+  title: Activity Example
+  start
+  partition Init {
+    :read config;
+    :init internal services;
+    note left: init themes
+  }
+  :Diagram requested;
+  if (diagram registered ?) then
+    :get implementation;
+  else (no)
+    :print error;
+  endif
+  switch ( renderer type )
+  case ( svg )
+    :Generate svg;
+  case ( canvas )
+    :Draw canvas;
+  case ( custom )
+    :Custom renderer output;
+  endswitch
+  while (data available?) is (可用)
+    :read data;
+    :generate diagrams;
+  endwhile (no)
+  end
 `}/>
 
-### 2.3 Github 警告
+#### 列出页面
 
-> [!NOTE]
-> Note 123
-
-> [!TIP]
-> TIP 123
-
-> [!IMPORTANT]
-> IMPORTANT 123
-
-> [!WARNING]
-> WARNING 123
-
-> [!CAUTION]
-> CAUTION 123
-
-
-```text
-> [!NOTE]
-> Note 123
-
-> [!TIP]
-> TIP 123
-
-> [!IMPORTANT]
-> IMPORTANT 123
-
-> [!WARNING]
-> WARNING 123
-
-> [!CAUTION]
-> CAUTION 123
-```
+有些时候我们可能想要自动搜索某个目录中的页面，然后将其列出，这样就不用手动去维护链接了。
