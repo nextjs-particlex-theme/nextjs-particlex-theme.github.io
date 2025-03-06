@@ -24,7 +24,7 @@ jobs:
     - name: Checkout Main Repository 
       uses: actions/checkout@v4
       with:
-        repository: IceOfSummer/nextjs-particlex-theme
+        repository: nextjs-particlex-theme/particlex
         # 这里可以选一个 tag 或者 分支
         ref: master
         path: nextjs-particlex-theme
